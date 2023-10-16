@@ -8,11 +8,13 @@
     @csrf
     Title:
     <br />
-    <input type="text" name="title" />
+    <input type="text" name="title" class="@error('title') is-invalid @enderror"/>
     <br /><br />
+    @error('title') <div class="alert alert-danger">{{ $message }}</div> @enderror
     Description:
     <br />
-    <input type="text" name="description" />
+    <input type="text" name="description" class="@error('description') is-invalid @enderror"/>
     <br /><br />
+    @error('description') <div class="alert alert-danger">{{ $message }}</div> @enderror
     <button type="submit">Save</button>
 </form>
