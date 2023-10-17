@@ -6,15 +6,22 @@
 
 <form method="POST" action="{{ route('projects.store') }}">
     @csrf
+    @if($errors->any())
+        <div class="aler alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     Title:
     <br />
-    <input type="text" name="title" class="@error('title') is-invalid @enderror"/>
+    <input type="text" name="title" />
     <br /><br />
-    @error('title') <div class="alert alert-danger">{{ $message }}</div> @enderror
     Description:
     <br />
-    <input type="text" name="description" class="@error('description') is-invalid @enderror"/>
+    <input type="text" name="description" />
     <br /><br />
-    @error('description') <div class="alert alert-danger">{{ $message }}</div> @enderror
     <button type="submit">Save</button>
 </form>
